@@ -1,7 +1,6 @@
 ---
 import '../styles/theme.scss'
 import '../styles/index.scss'
-import Footer from '../components/Footer/Footer.astro'
 ---
 
 <!DOCTYPE html>
@@ -12,31 +11,30 @@ import Footer from '../components/Footer/Footer.astro'
     <title>Document</title>
 </head>
 <body>
-    <main class="landing">
+     <main class="landing">
   <section class="hero">
-    <h1>Pick Up the Light</h1>
-    <p>A curated collection of creative sparks, visual insights, and philosophical reflections.</p>
+    <h1>404 - Page Not Found</h1>
+<p> Looks like the light you're chasing isn't here yet.</p>
   </section>
 
-  <section class="intro">
-    <p>Not everything that glows is obvious. This site collects the light that stayed—ideas, fragments, and reflections that lingered long after first contact.</p>
-  </section>
 
   <nav class="entry-points">
     <ul>
-      <li><a href="/en/technology-design/page-1">Technology & Design </a></li>
-      <li><a href="/en/society-culture/page-1">Society & Culture </a></li>
+      <li>  <a href="/" class="home-link">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+    </svg>
+    Return to Home
+  </a></li>
       
     </ul>
   </nav>
     </main>
-    <Footer  path=''/>
 </body>
 </html>
 
-
 <style>
-  .landing {
+     .landing {
   max-width: 720px;
   margin: 0 auto;
   padding: 2rem;
@@ -55,9 +53,6 @@ import Footer from '../components/Footer/Footer.astro'
 .hero p {
   margin-top: 2rem;
 }
-.intro {
-  margin-top: 2rem;
-}
 .entry-points {
   margin-top: 2rem;
 }
@@ -72,7 +67,7 @@ import Footer from '../components/Footer/Footer.astro'
 
 .entry-points a {
   text-decoration: none;
-  color: var(--theme-link);
+  color: var(--theme-text-accent);
   font-weight: bold;
 }
 

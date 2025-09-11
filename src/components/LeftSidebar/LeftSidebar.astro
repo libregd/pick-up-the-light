@@ -1,42 +1,49 @@
 ---
-import { getLanguageFromURL } from '../../languages'
-import { SIDEBAR } from '../../consts'
+import { getLanguageFromURL } from "../../languages";
+import { SIDEBAR } from "../../consts";
 
 type Props = {
-  currentPage: string
-}
+  currentPage: string;
+};
 
-const { currentPage } = Astro.props
-const currentPageMatch = currentPage.endsWith('/')
+const { currentPage } = Astro.props;
+const currentPageMatch = currentPage.endsWith("/")
   ? currentPage.slice(1, -1)
-  : currentPage.slice(1)
-const langCode = getLanguageFromURL(currentPage)
-const sidebar = SIDEBAR[langCode]
+  : currentPage.slice(1);
+const langCode = getLanguageFromURL(currentPage);
+const sidebar = SIDEBAR[langCode];
 ---
 
 <nav aria-labelledby="grid-left">
   <ul class="nav-groups">
     {
-      Object.entries(sidebar).map(([header, children]) => (
+      Object.entries(sidebar).map(([sectionTitle, stageGroups]) => (
         <li>
           <div class="nav-group">
-            <h2>{header}</h2>
+            <h4>{sectionTitle}</h4>
             <ul>
-              {children.map((child) => {
-                const url = Astro.site?.pathname + child.link
-                return (
-                  <li class="nav-link">
-                    <a
-                      href={url}
-                      aria-current={
-                        currentPageMatch === child.link ? 'page' : false
-                      }
-                    >
-                      {child.text}
-                    </a>
-                  </li>
-                )
-              })}
+              {Object.entries(stageGroups).map(([stageTitle, pages]) => (
+                <li>
+                  <strong>{stageTitle}</strong>
+                  <ul>
+                    {pages.map((page) => {
+                      const url = Astro.site?.pathname + page.link;
+                      return (
+                        <li class="nav-link">
+                          <a
+                            href={url}
+                            aria-current={
+                              currentPageMatch === page.link ? "page" : false
+                            }
+                          >
+                            {page.text}
+                          </a>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </li>
+              ))}
             </ul>
           </div>
         </li>
@@ -46,12 +53,12 @@ const sidebar = SIDEBAR[langCode]
 </nav>
 
 <script is:inline>
-  window.addEventListener('DOMContentLoaded', () => {
-    var target = document.querySelector('[aria-current="page"]')
+  window.addEventListener("DOMContentLoaded", () => {
+    var target = document.querySelector('[aria-current="page"]');
     if (target && target.offsetTop > window.innerHeight - 100) {
-      document.querySelector('.nav-groups').scrollTop = target.offsetTop
+      document.querySelector(".nav-groups").scrollTop = target.offsetTop;
     }
-  })
+  });
 </script>
 
 <style>
@@ -63,13 +70,14 @@ const sidebar = SIDEBAR[langCode]
   .nav-groups {
     height: 100%;
     padding: 2rem 0;
+    margin-top: 2rem;
     overflow-x: visible;
     overflow-y: auto;
     max-height: 100vh;
   }
 
   .nav-groups > li + li {
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
 
   .nav-groups > :first-child {
@@ -102,7 +110,7 @@ const sidebar = SIDEBAR[langCode]
     background-color: var(--theme-bg-hover);
   }
 
-  .nav-link a[aria-current='page'] {
+  .nav-link a[aria-current="page"] {
     color: var(--theme-text-accent);
     background-color: var(--theme-bg-accent);
     font-weight: 600;
@@ -116,7 +124,7 @@ const sidebar = SIDEBAR[langCode]
 </style>
 
 <style is:global>
-  :root.theme-dark .nav-link a[aria-current='page'] {
+  :root.theme-dark .nav-link a[aria-current="page"] {
     color: hsla(var(--color-base-white), 100%, 1);
   }
 </style>
