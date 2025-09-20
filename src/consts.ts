@@ -49,24 +49,24 @@ export const SIDEBAR: Sidebar = {
   en: {
     'Technology & Design': {
       'Sparks': [
-        { text: 'sample 1', link: 'en/technology-design/page-1' },
-        { text: 'sample 2', link: 'en/technology-design/page-2' }
+        { text: 'Logothon', link: 'en/technology-design/logothon-designing-logos-for-open-source-projects' },
+        // { text: 'sample 2', link: 'en/technology-design/page-2' }
       ],
-            'Insights': [
-        { text: 'sample 3', link: 'en/technology-design/page-3' },
-        { text: 'sample 4', link: 'en/technology-design/page-4' }
-      ],
+           // 'Insights': [
+        // { text: 'sample 3', link: 'en/technology-design/page-3' },
+        // { text: 'sample 4', link: 'en/technology-design/page-4' }
+      //],
     },
-    'Society & Culture': {
-      'Sparks': [
-        { text: 'sample 1', link: 'en/society-culture/page-1' },
-        { text: 'sample 2', link: 'en/society-culture/page-2' }
-      ],
-            'Insights': [
-        { text: 'sample 3', link: 'en/society-culture/page-3' },
-        { text: 'sample 4', link: 'en/society-culture/page-4' }
-      ],
-    }
+   // 'Society & Culture': {
+      // 'Sparks': [
+      //   // { text: 'sample 1', link: 'en/society-culture/page-1' },
+      //   // { text: 'sample 2', link: 'en/society-culture/page-2' }
+      // ],
+      //       'Insights': [
+      //   // { text: 'sample 3', link: 'en/society-culture/page-3' },
+      //   // { text: 'sample 4', link: 'en/society-culture/page-4' }
+      // ],
+    //}
         
   }
 }
