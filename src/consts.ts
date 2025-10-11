@@ -50,7 +50,7 @@ export const SIDEBAR: Sidebar = {
     'Technology & Design': {
       'Sparks': [
         { text: 'Logothon', link: 'en/technology-design/logothon-designing-logos-for-open-source-projects' },
-        // { text: 'sample 2', link: 'en/technology-design/page-2' }
+        { text: 'textmode.js', link: 'en/technology-design/textmode-js' }
       ],
            // 'Insights': [
         // { text: 'sample 3', link: 'en/technology-design/page-3' },

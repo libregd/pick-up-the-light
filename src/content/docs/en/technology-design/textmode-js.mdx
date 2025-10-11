@@ -1,0 +1,131 @@
+---
+title: 'play with textmode.js'
+description: 'Exploring textmode.js, a lightweight WebGL library for creative coding that turns text into art.This article looks at its design philosophy, community, and the fusion of textmode with Chinese characters — a fresh intersection of code, language, and visual storytelling.'
+---
+## 🧠 1. Why Pay Attention to **textmode.js**?
+
+Mainly because the author really cares about it.
+I first discovered **textmode.js** through Discord channels like *Birb’s Nest* or *The Coding Train*. What truly inspired me was [editor.textmode.art](https://editor.textmode.art/) — I realized how friendly it is for newcomers in creative coding when a project offers a smart, elegant, and intuitive visual editor.
+![editor.textmode](/images/textmode/image-1.png)
+Later, I followed the author’s own Discord channel. He updates frequently and clearly holds himself to a high standard. Many creators also share their work made with **textmode**, which helped me gradually understand this library better.
+
+Here’s what stood out to me:
+
+1. It borrows some ideas from **P5.js**, so it’s beginner-friendly.
+2. It’s built on **WebGL**, which gives it excellent performance and animation capabilities.
+3. It’s lightweight, has zero dependencies, supports multiple use cases, and is open-source — clearly a labor of love.
+4. Its overall aesthetic reminds people of nostalgic **8-bit pixel art**, which caught my eye even though I’m not a pixel-art enthusiast.
+
+I finally had some free time to explore this library during the holidays, so I decided to write this article.
+This isn’t meant to be an official tutorial or an art showcase — more like a reflection on experience and insight.
+
+---
+
+## 🧪 2. Exploring the **textmode** Community
+
+On [reddit/r/textmode](https://www.reddit.com/r/textmode/), you can get a quick overview of the broader *textmode* ecosystem — many different technologies and software tools can create textmode-style works, each with its own focus.
+
+Still, **textmode.js** has a distinct identity. From the author’s Discord updates, it’s clear the project is still expanding in creative directions:
+
+1. **Textmode for images** — turning pictures into stylized, text-based visuals.
+2. **Textmode for videos** — reinterpreting video frames in text form. It’s interesting because modern video design often chases visual attraction, while *textmode.js* offers a more deliberate, nostalgic control.
+3. **Dynamic textmode** — using WebGL-based 3D rendering to build shapes with text. It creates a completely new flavor compared to ordinary rendering.
+
+![alt text](/images/textmode/image-2.png)
+
+## 💥 3. Textmode Meets Chinese Characters
+
+At first glance, most people naturally associate *textmode* with pixel art. The author even recommends pixel-style fonts — it makes the final result look cohesive.
+
+Strictly speaking, *textmode* is best suited for creative coders, designers, or digital art enthusiasts who:
+
+* Have some JS experience (ideally P5.js).
+* Want to explore dynamic effects (some GLSL/shader knowledge helps).
+* Appreciate the pixel-art aesthetic, but value reusability and automation in creation.
+
+Even so, I found myself connecting *textmode* to **Chinese characters**.
+After all, Chinese is often called “square script,” and *textmode* also relies on a precise grid system — the similarity feels natural.
+
+![Group 9](/images/textmode/image-3.png)
+
+The artwork *Two Trees* by **Chu Sixian (aka “freeman”)** inspired me to experiment with textmode. In that piece, the sky is filled with blue text — “蓝天” (Chinese for “blue sky”) and “blue sky” in English.
+
+That made me wonder: could an image be composed entirely of words instead of lines?
+*Textmode* makes that possible.
+
+![Group 5](/images/textmode/image-4.png)
+
+So I tried recreating the picture in this way. For Chinese users, each character can already carry meaning — for example:
+
+* 艹 / 草 = grass
+* 花 = flower
+* 木 = tree / wood
+* 石 = stone
+* 阳 / 日 = sun
+* 云 = cloud
+
+So the left image can essentially be *read* as the right one — abstract, but understandable, even without emojis or illustrations.
+
+![Group 16](/images/textmode/image-5.png)
+
+下面这幅图，几乎所有人都知道是什么，虽然非常的简陋：
+
+![Group 16](/images/textmode/image-6.png)
+
+Then I redrew another simple image using Chinese characters — the result reminded me of **Arabic calligraphy**.
+
+![Group 16](/images/textmode/image-7.png)
+
+>![](https://i.pinimg.com/736x/06/27/94/06279468b60ad79129a9ccfbaa2af6a9.jpg)
+> [from pinterest by Swara sara](https://www.pinterest.com/pin/133067363979758749/)
+
+It made me think: even without strong drawing or coding skills, could *textmode* open new creative doors?
+
+ ## 🏊 4. Some Thoughts and Possibilities
+
+  ### Strengthening the Technical Side
+
+  If *textmode.js* continues to deepen its technical foundation, it will naturally attract people with programming skills. Dynamic *textmode* is visually powerful, but it has a higher learning curve.
+
+  You attract beginners by offering something simple.
+  You attract experts by offering something deep.
+
+  ### Attracting Everyday Users
+
+  But what if *textmode* wanted to reach **non-programmers** — people who can’t code or draw?
+  How could it inspire them to play, experiment, and maybe even learn?
+
+  * There could be a marketplace for assets and examples, with easy-to-use UI wrappers instead of direct code.
+  * Static works (like pixel art) would be cheaper; dynamic ones (requiring shaders) more valuable.
+  * Layered or combinable tools could simplify recoloring and reuse — something like [place.textmode.art](https://place.textmode.art/) could be repurposed for this.
+  * Objects could be wrapped as callable functions — a cute character, a cat, explosions, message boxes for a visual novel, and so on.
+
+![Group 16](/images/textmode/image-8.png)
+
+In short, an ecosystem where **people consume each other’s creativity**.
+
+* Character controls: space to shoot, arrow keys to move.
+* Map building: the browser as an infinite 2D canvas, powered by strong shader performance.
+* Event triggers: collisions, dialogues, data passing.
+* Collaborative projects: multiple users building and playing together.
+
+![Group 16](/images/textmode/image-9.png)
+
+It’s almost like a **flat version of Roblox** — but entirely browser-based, which is pretty exciting.
+
+Some additional things to consider:
+
+1. Browser-based means the code is partially public. Artists should be able to choose between free and paid releases — and get protected when they choose not to go free.
+2. If *textmode* is only used decoratively, it loses its core — the *text* itself.
+   Imagine if the real message or secret of a story was hidden inside those textured lines of text.
+   I recommend reading [*Texts as Toys* by Venkatesh Rao](https://contraptions.venkateshrao.com/p/texts-as-toys) — it captures this spirit beautifully.
+
+## Summary
+
+In the end, what draws me to textmode.js isn’t just its code or visuals — it’s the idea that text itself can be a material for expression.
+Between symbols and pixels, between meaning and pattern, there’s a space where words can become images, and images can start to speak.
+That’s where I’d like to keep exploring.
+
+Projects like textmode.js show how small, focused ideas can inspire whole communities.
+If you’ve ever wanted to draw with code — or write with shapes — this is a great place to start.
+I’ll keep exploring, and I hope more people join this little text-based universe.
