@@ -22,4 +22,4 @@ pnpm-debug.log*
 logo.afdesign
 logo.svg
 # content
-content/docs/cn/*
+src/content/docs/cn/*
