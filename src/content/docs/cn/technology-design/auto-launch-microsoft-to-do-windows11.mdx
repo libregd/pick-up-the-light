@@ -1,0 +1,165 @@
+---
+title: 'Microsoft To Do'
+description: '如何在windows11 上希望每天开机后能自动弹出Microsoft To Do 的窗口，提醒自己注意进度。'
+---
+
+## 背景：为什么做这件事
+
+时间管理是需要用一生来动态调整的事务，这件事，对我来说，还是有一些挑战。
+
+在过去的3年，我使用实体的笔记本和笔来作为时间管理的主要工具，但最近2个月不太管用了，我准备寻求一些补救的措施：
+
+通过每天电脑开机后就能看到的Microsoft To Do 的窗口，让自己更有重点。并且由于我通常不会全屏使用某个界面，总可以留一些空地让它露出。
+
+习惯养成的关键是“触发器”，而开机就是一个天然触发点。
+
+这篇博客记录了核心的实践和要点：让 To Do 在windows11开机后自动弹出窗口
+
+## 具体实现办法
+
+### 以管理员身份运行 PowerShell
+
+1. 在开始菜单中搜索 “PowerShell”
+2. **右键点击** → 选择「以管理员身份运行」（否则会报 错“Access is denied”。）
+3. 在弹出的命令行窗口中，直接贴入下面的命令，如果没有报错则说明成功了。(如果报错了大部分是跟用户身份，任务计划程序中的权限 这些限制有关系)
+
+```powershell
+$Action = New-ScheduledTaskAction -Execute "explorer.exe" -Argument "shell:AppsFolder\Microsoft.Todos_8wekyb3d8bbwe!App"
+$Trigger = New-ScheduledTaskTrigger -AtLogOn
+Register-ScheduledTask -TaskName "LaunchToDo" -Action $Action -Trigger $Trigger -Description "startup Microsoft To Do" -User "$env:USERNAME"
+```
+
+### 检查任务是否创建成功
+
+1. 打开「任务计划程序」（开始菜单搜索即可）  
+2. 在左侧点击「任务计划程序库」  
+3. 找到名为 `LaunchToDo` 的任务（如果你用了我之前的命令）  
+4. 双击打开，确认以下设置：
+   - **触发器**是「当用户登录时」
+   - **操作**是启动 `explorer.exe`，参数为 `shell:AppsFolder\Microsoft.Todos_8wekyb3d8bbwe!App`
+   - **常规**中「仅当用户登录时运行」是勾选状态
+5. 或者更简单，重启电脑，看看Microsoft To Do 的窗口是否登录windows11 后自动弹出来。
+
+## 额外的探索：对这类需求的思考
+
+### 详细的解释命令
+
+**创建启动动作**
+
+```powershell
+$Action = New-ScheduledTaskAction -Execute "explorer.exe" -Argument "shell:AppsFolder\Microsoft.Todos_8wekyb3d8bbwe!App"
+```
+
+- `New-ScheduledTaskAction` 是用来定义任务要执行的动作
+- `-Execute "explorer.exe"` 表示用资源管理器来打开某个路径
+- `-Argument "shell:AppsFolder\Microsoft.Todos_8wekyb3d8bbwe!App"` 是 UWP 应用的特殊路径，代表 Microsoft To Do 的启动入口
+
+💡 **为什么用 explorer.exe？**  
+因为 UWP 应用没有传统的 `.exe` 文件，我们用 `explorer.exe` 来打开它的“应用容器路径”，这样它会以窗口形式启动。
+
+**设置触发器**
+
+```powershell
+$Trigger = New-ScheduledTaskTrigger -AtLogOn
+```
+
+- `New-ScheduledTaskTrigger` 是用来定义任务的触发条件
+- `-AtLogOn` 表示在用户登录时触发（而不是开机时）
+
+✅ 这样可以确保 To Do 在你登录后以窗口形式启动，而不是在系统后台静默运行。
+
+**注册任务**
+
+```powershell
+Register-ScheduledTask -TaskName "LaunchToDo" -Action $Action -Trigger $Trigger -Description "启动 Microsoft To Do" -User "$env:USERNAME"
+```
+
+- `Register-ScheduledTask` 是用来把任务注册到系统中
+- `-TaskName "LaunchToDo"` 是任务的名字，你可以自定义
+- `-Action $Action` 和 `-Trigger $Trigger` 是前面定义的动作和触发器
+- `-Description` 是任务的说明
+- `-User "$env:USERNAME"` 表示任务绑定当前用户
+
+### `8wekyb3d8bbwe!App` 是怎么来的？
+
+这是 UWP 应用的**内部启动路径**，由系统自动分配。它的结构如下：
+
+```
+shell:AppsFolder\PackageFamilyName!AppId
+```
+
+- `Microsoft.Todos_8wekyb3d8bbwe` 是 Microsoft To Do 的 **Package Family Name**
+- `!App` 是它的默认启动入口（AppId）
+
+📌 **如何查找其他 UWP 应用的路径？**
+
+你可以用 PowerShell 查询所有 UWP 应用的启动路径：
+
+```powershell
+Get-StartApps
+```
+
+这会列出所有可启动的 UWP 应用及其 `AppUserModelId`，你可以从中找到类似：
+
+```
+Name             AppUserModelId
+----             ---------------
+Microsoft To Do  Microsoft.Todos_8wekyb3d8bbwe!App
+```
+
+------
+
+### 所有 UWP 应用都适用？
+
+✅ **大多数可以**，但有几个前提：
+
+- 应用必须支持通过 `AppUserModelId` 启动（大多数 Store 应用都支持）
+- 有些系统应用或受限应用可能无法通过 `explorer.exe shell:AppsFolder\...` 启动
+- 如果你发现某个 UWP 应用无法启动，可以尝试用 `Get-StartApps` 查路径
+
+### 如何删除任务？
+**这段 PowerShell 代码是临时性的吗？变量名可以改吗？**
+
+- **变量名如 `$Action`、`$Trigger` 是临时的**，只在你运行脚本的那一刻有效
+- 你可以随意改成 `$a`、`$t`、`$myTrigger` 等，只要语法正确
+- 真正“永久”的是 `Register-ScheduledTask` 创建的任务，它会保存在任务计划程序中，直到你手动删除
+
+📌 如果你以后想删除这个任务，只需运行：
+
+```powershell
+Unregister-ScheduledTask -TaskName "LaunchToDo" -Confirm:$false
+```
+
+### 如果是非 UWP 应用呢？
+
+#### 🛠 开机启动但是不弹出窗口
+
+1. 非 UWP 应用通常有 `.exe` 文件，可以直接创建快捷方式
+2. **按下 Win + R**，打开“运行”窗口  
+3. 输入 `shell:startup`，然后按 Enter  
+4. 在弹出的文件夹中，将  **软件名字** 的快捷方式拖进去，如果没有快捷方式，可以在开始菜单中找到 **软件名字**，右键 → 更多 → 打开文件位置 → 再右键创建快捷方式
+
+这样每次开机时，系统就会自动打开**软件名字**。
+
+#### 📅 用户登录后自动弹出窗口
+
+1. 打开“任务计划程序”（在开始菜单搜索即可）  
+2. 点击“创建基本任务”  
+3. 设置名称，例如 “启动 *** ”  
+4. 触发器选择“**当用户登录时**”  
+5. 操作选择“启动程序”，然后浏览选择 *** 的可执行文件  
+6. 完成设置即可
+
+系统出于安全考虑，后台任务无法访问用户界面，除非你明确指定它在用户登录后运行。
+
+📌 如果你希望非 UWP 应用延迟启动、或设置更复杂的触发条件，那才考虑用任务计划程序。
+
+
+
+## 总结
+
+全文大部分内容基本来自AI，我做的事主要是提问和验证，以及整理这篇notes：
+
+命令行代码和界面操作可以说对应起来了，就我个人体验来说，越来越偏好代码的形式来完成很多事情，说实话，界面操作的体验并不好。
+
+![1](/images/microsoftToDo/1.png)

@@ -21,3 +21,5 @@ pnpm-debug.log*
 .DS_Store
 logo.afdesign
 logo.svg
+# content
+content/docs/cn/*

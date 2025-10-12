@@ -1,0 +1,123 @@
+---
+title: 'play with textmode.js'
+description: 'Exploring textmode.js, a lightweight WebGL library for creative coding that turns text into art.This article looks at its design philosophy, community, and the fusion of textmode with Chinese characters — a fresh intersection of code, language, and visual storytelling.'
+---
+## 🧠 1. 为什么关注 textmode.js？
+主要是作者很用心，我第一次知道textmode.js 是在discord频道：Birb's Nest 或 Coding Train，我被 [editor.textmode.art](https://editor.textmode.art/) 启发到了：原来在推广代码类作品的时候，制作一个方便的，优雅的，聪明的可视化操作界面，对初步了解创意编程的人是这么的友好。
+![editor.textmode](image.png)
+然后在作者的频道上，作者更新得很勤快，看得出来他对自己要求严格，精益求精。同时也有很多创作者使用textmode来创作分享作品，这样的环境我慢慢的增多了对这个代码库的了解。
+1. 某种程度上借鉴了P5.JS，因此使用和入门非常的友好。
+2. 同时深入了webGL技术，在实时性能，动画表现上支持相当优秀。
+3. 库本身轻量，零依赖，而且支持多种使用方式，还是开源的！作者在这上面倾注了大量的心血。
+4. 整个库的气质很容易让人想起怀旧复古的8-bit 像素风，这一点尤为让我注意到，尽管我并不是像素风的忠实粉丝。
+
+最后是有假期腾出一些时间来探索这个库，所以写了这篇文章。我希望这篇文章不像官方的教程，也不像艺术创作者的作品展示，而是侧重一种体验和洞察的分享。
+
+
+---
+
+## 🧪 2. 围观 texemode 社区
+
+在[reddit/r/textmode ](https://www.reddit.com/r/textmode/) 上可以较为快速的一览textmode，很多技术和软件载体都可以实现textmode的创作，并且侧重非常的不同。
+
+但textmode.js依旧有自己的独特立足点，通过在discord上作者的分享，可以发现项目还在探索很多功能：
+1. 针对图片的textmode 化—— 这意味着可以通过图片就能获得基于text的风格化图片。
+2. 针对视频的texmode，意味着一种重新编码，怎么说呢，长久以来的视频视觉都在追去更多的吸引力和眼球，如果你的项目是像素风或者怀旧质感，那么textmode.js 可以为你的素材提供一种高度可掌控的遥控器。
+3. 基于动态的textmode实现，这一点在基于webGL的3D渲染上尤为突出，用text去完成点线面的结构，完全会产生不一样的风味。
+
+![alt text](/images/textmode/image-2.png)
+
+## 💥 3. 一种textmode和中文文本的碰撞
+
+
+尽管所有第一眼看textmode的人都会毫无疑问的把它和像素风联系在一起，作者在fonts 的部分甚至精心推荐了像素风字体：这一切都是为了让效果最后呈现得更和谐。
+
+严格来说textmode 更适合提供给专业的创意编程人员/设计师/绘画爱好者使用：
+
+- 需要一定程度的JS代码编写经验，如果之前接触过P5.JS 是最好的。
+- 动态这一部分非常有开拓性，但有一些shader（GLSL）的基础可能能创作出更多的乐趣。
+- 在像素风往往被看做一种风味的时候，多种工具都可以满足实现，这让textmode的“复用”“批量”的特性显得有些不够重要。
+
+但我还是把它和中国字联系到了一起，我想是因为中文也被称为“方块字”，这和textmode基于严格的网格来渲染有些不谋而合。
+
+![Group 9](/images/textmode/image-3.png)
+
+ 在下面的图中，右边的《两棵树》启发了我对于textmode 的使用。这幅画由一位绘画爱好者楚思贤（昵称“freeman”）创作，在天空的地方，用蓝色文字“蓝天”（中文），“blue sky” （英文）来填充。
+
+如果完全去掉线条，仅仅采用文字是否也可构成画面呢？textmode给了这种可能性。
+
+![Group 5](/images/textmode/image-4.png)
+
+所以有了下面的图，参考左边的图片，制作了右边的版本。对中文用户来说，一个字符本身就可以代表一个词汇。
+
+* 艹 / 草 = grass
+* 花 = flower
+* 木 = tree / wood
+* 石 = stone
+* 阳 / 日 = sun
+* 云 = cloud
+
+也就是说，左边的图，在中文用户的眼里，基本可以理解成右边的形象，但没有emoji 或者视觉图像那么具体。
+
+![Group 16](/images/textmode/image-5.png)
+
+下面这幅图，几乎所有人都知道是什么，虽然非常的简陋：
+
+
+![Group 16](/images/textmode/image-6.png)
+
+然后我尝试使用中文来重绘这个画面，结果非常有趣，让我想起了Arabic Calligraphy：
+
+![Group 16](/images/textmode/image-7.png)
+
+>![](https://i.pinimg.com/736x/06/27/94/06279468b60ad79129a9ccfbaa2af6a9.jpg)
+> [from pinterest by Swara sara](https://www.pinterest.com/pin/133067363979758749/)
+
+这让我思考，如果并不具备优秀的绘画技能（像素风还是需要一些耐心的），或者编程技能（特别是创意视觉方向），textmode是否潜藏了一些可能性。
+
+ ## 🏊  4. 一些想法的探索
+
+  ### textmode加强代码
+
+如果持续加强代码方面的深入，那么可能主要吸引的是具备编程能力的人，因为动态textmode确实吸引力超出了普通的像素风格制作工具，但门槛确实不低。
+
+你只提供一点专业的东西，吸引的是小白，你提供很多专业的东西，吸引的是同行和专家。
+
+  ### textmode 吸引普通用户
+
+ 让我们来假设一下，一位普通用户（根本不会编程,甚至不会画画）会如何被吸引，花费精力玩耍甚至开始学习编程和绘画？
+
+- 如果有商店可以购买素材/案例，并且知道怎么应用代码（或者封装成UI来操作）。
+
+- 动态和静态价格自然是不一样的，动态需要shader的编写能力，而静态不需要。
+
+- 静态的通过一些类似像素画的工具即可完成制作，如果能够分图层或者组合，则能够在应用素材和修改配色的时候比较简单。可能作者之前的[place.textmode](https://place.textmode.art/) 有一部分功能可以复用。
+- 绘制的内容可以多种多样，封装成对象/函数调用：可爱的男女主人公，或者是一只小猫咪，走路跑步，爆炸，摇摆，Visual Novel messagebox。
+  
+![Group 16](/images/textmode/image-8.png)
+
+但这些仅仅满足了“又一个画图工具/canva”的感觉，我们还需要更多：用户不能只来消费别人的创造，他也需要别人来消费他的创造。在同一个生态内完成循环。
+
+- 人物操作：空格发送子弹，方向键移动。
+- 制作地图：浏览器某种程度是无限的2D画布，而shader的渲染性能足够强劲，且
+- 触发事件：撞击，对话，数据传递
+- 多人合作制作作品，多人一起玩。
+
+![Group 16](/images/textmode/image-9.png)
+
+总的来说，有点像平面版本的Roblox平台？但一个浏览器就能够玩，这本身是很有诱惑力的事。
+
+可能额外需要考虑的事：
+
+1. 基于浏览器意味着代码某种程度是公开的，艺术家们当然可以选择free，但我认为当没选择free的时候，他的收益应当被保护。
+2. textmode 如果仅仅从装饰性的角度来应用于绘画/动态，我多少会感觉丧失了text这个关键的元素。想象一下，也许故事的一些精彩之处或者答案早已藏在周围那些纹理一样的text中了。推荐阅读：[Texts as Toys  by Venkatesh Rao](https://contraptions.venkateshrao.com/p/texts-as-toys)
+
+## Summary
+
+In the end, what draws me to textmode.js isn’t just its code or visuals — it’s the idea that text itself can be a material for expression.
+Between symbols and pixels, between meaning and pattern, there’s a space where words can become images, and images can start to speak.
+That’s where I’d like to keep exploring.
+
+Projects like textmode.js show how small, focused ideas can inspire whole communities.
+If you’ve ever wanted to draw with code — or write with shapes — this is a great place to start.
+I’ll keep exploring, and I hope more people join this little text-based universe.

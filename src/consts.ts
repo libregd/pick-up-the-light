@@ -52,17 +52,17 @@ export const SIDEBAR: Sidebar = {
         { text: 'Logothon', link: 'en/technology-design/logothon-designing-logos-for-open-source-projects' },
         { text: 'textmode.js', link: 'en/technology-design/textmode-js' }
       ],
-           // 'Insights': [
-        // { text: 'sample 3', link: 'en/technology-design/page-3' },
-        // { text: 'sample 4', link: 'en/technology-design/page-4' }
-      //],
+      'Notes': [
+        { text: 'Microsoft To Do', link: 'en/technology-design/auto-launch-microsoft-to-do-windows11' },
+        // { text: 'npm-scanner.js', link: 'en/technology-design/npm-scanner-js' }
+      ],
     },
    // 'Society & Culture': {
       // 'Sparks': [
       //   // { text: 'sample 1', link: 'en/society-culture/page-1' },
       //   // { text: 'sample 2', link: 'en/society-culture/page-2' }
       // ],
-      //       'Insights': [
+      //       'Notes': [
       //   // { text: 'sample 3', link: 'en/society-culture/page-3' },
       //   // { text: 'sample 4', link: 'en/society-culture/page-4' }
       // ],
