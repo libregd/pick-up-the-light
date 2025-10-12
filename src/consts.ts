@@ -31,10 +31,15 @@ export const ALGOLIA = {
   apiKey: 'XXXXXXXXXX'
 }
 
+// export type Sidebar = Record<
+//   (typeof KNOWN_LANGUAGE_CODES)[number],
+//   Record<string, { text: string; link: string }[]>
+// >
 export type Sidebar = Record<
   (typeof KNOWN_LANGUAGE_CODES)[number],
-  Record<string, { text: string; link: string }[]>
->
+  Record<string, Record<string, { text: string; link: string }[]>>
+>;
+
 // export const SIDEBAR: Sidebar = {
 //   en: {
 //     'creation': [
@@ -57,16 +62,8 @@ export const SIDEBAR: Sidebar = {
         // { text: 'npm-scanner.js', link: 'en/technology-design/npm-scanner-js' }
       ],
     },
-   // 'Society & Culture': {
-      // 'Sparks': [
-      //   // { text: 'sample 1', link: 'en/society-culture/page-1' },
-      //   // { text: 'sample 2', link: 'en/society-culture/page-2' }
-      // ],
-      //       'Notes': [
-      //   // { text: 'sample 3', link: 'en/society-culture/page-3' },
-      //   // { text: 'sample 4', link: 'en/society-culture/page-4' }
-      // ],
-    //}
+
         
-  }
+  },
+   cn: {} // 👈 加上这个就不会报错了
 }
