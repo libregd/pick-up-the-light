@@ -1,6 +1,6 @@
 export const SITE = {
   title: 'Pick up the light',
-  description: 'Your website description.',
+  description: 'A curated collection of creative sparks, visual insights, and philosophical reflections.',
   defaultLanguage: 'en-us'
 } as const
 
@@ -65,5 +65,18 @@ export const SIDEBAR: Sidebar = {
 
         
   },
-   cn: {} // 👈 加上这个就不会报错了
+   cn: {
+    '技术与设计': {
+      '火花': [
+        { text: 'Logothon', link: 'cn/technology-design/logothon-designing-logos-for-open-source-projects' },
+        { text: 'textmode.js', link: 'cn/technology-design/textmode-js' }
+      ],
+      '笔记': [
+        { text: 'Microsoft To Do', link: 'cn/technology-design/auto-launch-microsoft-to-do-windows11' },
+        // { text: 'npm-scanner.js', link: 'cn/technology-design/npm-scanner-js' }
+      ],
+    },
+
+        
+  }
 }
