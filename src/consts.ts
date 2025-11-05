@@ -55,7 +55,8 @@ export const SIDEBAR: Sidebar = {
     'Technology & Design': {
       'Sparks': [
         { text: 'Logothon', link: 'en/technology-design/logothon-designing-logos-for-open-source-projects' },
-        { text: 'textmode.js', link: 'en/technology-design/textmode-js' }
+        { text: 'textmode.js', link: 'en/technology-design/textmode-js' },
+        { text: 'AI2img: Some Truths', link: 'en/technology-design/ai2img-some-truths' }
       ],
       'Notes': [
         { text: 'Microsoft To Do', link: 'en/technology-design/auto-launch-microsoft-to-do-windows11' },
@@ -69,7 +70,8 @@ export const SIDEBAR: Sidebar = {
     '技术与设计': {
       '火花': [
         { text: 'Logothon', link: 'cn/technology-design/logothon-designing-logos-for-open-source-projects' },
-        { text: 'textmode.js', link: 'cn/technology-design/textmode-js' }
+        { text: 'textmode.js', link: 'cn/technology-design/textmode-js' },
+        { text: 'AI2img: Some Truths', link: 'cn/technology-design/ai2img-some-truths' }
       ],
       '笔记': [
         { text: 'Microsoft To Do', link: 'cn/technology-design/auto-launch-microsoft-to-do-windows11' },
