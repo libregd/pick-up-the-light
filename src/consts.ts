@@ -63,7 +63,11 @@ export const SIDEBAR: Sidebar = {
         // { text: 'npm-scanner.js', link: 'en/technology-design/npm-scanner-js' }
       ],
     },
-
+    // 'society & culture': {
+    //   'Sparks': [
+    //     { text: 'learning web3', link: 'en/society-culture/web3-learning' }
+    //   ]
+    // }
         
   },
    cn: {
@@ -78,6 +82,11 @@ export const SIDEBAR: Sidebar = {
         // { text: 'npm-scanner.js', link: 'cn/technology-design/npm-scanner-js' }
       ],
     },
+    '社会与文化': {
+      '火花': [
+        { text: 'learn Web3', link: 'cn/society-culture/web3-learning' },
+      ]
+    }
 
         
   }
