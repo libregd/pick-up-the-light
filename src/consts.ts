@@ -63,11 +63,11 @@ export const SIDEBAR: Sidebar = {
         // { text: 'npm-scanner.js', link: 'en/technology-design/npm-scanner-js' }
       ],
     },
-    // 'society & culture': {
-    //   'Sparks': [
-    //     { text: 'learning web3', link: 'en/society-culture/web3-learning' }
-    //   ]
-    // }
+    'society & culture': {
+      'Sparks': [
+        { text: 'learning web3', link: 'en/society-culture/web3-learning' }
+      ]
+    }
         
   },
    cn: {
